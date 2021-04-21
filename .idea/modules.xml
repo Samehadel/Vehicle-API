@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/boogle-maps/boogle-maps.iml" filepath="$PROJECT_DIR$/boogle-maps/boogle-maps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Boogle-maps/boogle-maps.iml" filepath="$PROJECT_DIR$/Boogle-maps/boogle-maps.iml" />
       <module fileurl="file://$PROJECT_DIR$/Eureka (Server)/eureka.iml" filepath="$PROJECT_DIR$/Eureka (Server)/eureka.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Pricing Microservice/pricing-service.iml" filepath="$PROJECT_DIR$/Pricing Microservice/pricing-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pricing (Microservice)/pricing-service.iml" filepath="$PROJECT_DIR$/Pricing (Microservice)/pricing-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/temp.iml" filepath="$PROJECT_DIR$/.idea/temp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/vehicles-api/vehicles-api.iml" filepath="$PROJECT_DIR$/vehicles-api/vehicles-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Vehicles (API)/vehicles-api.iml" filepath="$PROJECT_DIR$/Vehicles (API)/vehicles-api.iml" />
     </modules>
   </component>
 </project>

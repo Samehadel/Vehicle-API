@@ -1,5 +1,6 @@
 package com.udacity.vehicles.api;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.udacity.vehicles.client.maps.MapsClient;
 import com.udacity.vehicles.client.prices.PriceClient;
 import com.udacity.vehicles.domain.Condition;
@@ -20,6 +21,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.ui.ModelMap;
 
 import java.net.URI;
 import java.util.Collections;
@@ -30,8 +33,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Implements testing of the CarController class.
@@ -116,6 +118,36 @@ public class CarControllerTest {
 
         verify(carService, times(1)).findById(1l);
 
+
+    }
+
+    /**
+     * Tests the update of a single car by ID and new instance .
+     *
+     * @throws Exception if the update operation of a vehicle fails
+     */
+
+    @Test
+    public void updateCar() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+
+        Car car = getCar();
+
+        car.setId(1l);
+
+        /*//Update newCar
+        car.setCondition(Condition.NEW);
+        car.setLocation(new Location(41.73, -55.91));
+        car.getDetails().setManufacturer(new Manufacturer(102, null));*/
+
+        String carJson = mapper.writeValueAsString(car);
+
+        mvc.perform(put("/cars/1")
+                .content(json.write(car).getJson())
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .accept(MediaType.APPLICATION_JSON_UTF8))
+             .andExpect(status().isOk())
+             .andExpect(content().json(carJson));
 
     }
 

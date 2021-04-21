@@ -83,15 +83,19 @@ public class CarService {
      */
     public Car save(Car car) {
         int manufacturerCode = car.getDetails().getManufacturer().getCode();
-        car.getDetails().setManufacturer(getManufacturer(manufacturerCode));
+        //car.getDetails().setManufacturer(getManufacturer(manufacturerCode));
+
+        Manufacturer manufacturer = getManufacturer(manufacturerCode); //Get manufacturer from DB
 
         //Existed Car
         if (car.getId() != null) {
 
             return carRepository.findById(car.getId())
                     .map(carToBeUpdated -> {
-                        carToBeUpdated.setLocation(car.getLocation());
+                        carToBeUpdated.getDetails().setManufacturer(manufacturer);
                         carToBeUpdated.setDetails(car.getDetails());
+                        carToBeUpdated.setCondition(car.getCondition());
+                        carToBeUpdated.setLocation(car.getLocation());
 
                         return carRepository.save(car);
                     }).orElseThrow(CarNotFoundException::new);
@@ -123,6 +127,9 @@ public class CarService {
     private Manufacturer getManufacturer(Integer code){
         Optional<Manufacturer> manufacturer = manufacturerRepository.findById(code); //Get manufacturer from DB
 
-        return manufacturer.get();
+        if (manufacturer.isPresent())
+            return manufacturer.get();
+        else
+            throw new ManufacturerNotFoundException("Manufacturer Not Exist For Code " + code);
     }
 }

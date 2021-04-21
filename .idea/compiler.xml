@@ -7,8 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="vehicles-api" />
-        <module name="pricing-service" />
         <module name="eureka" />
+        <module name="pricing-service" />
         <module name="boogle-maps" />
       </profile>
     </annotationProcessing>

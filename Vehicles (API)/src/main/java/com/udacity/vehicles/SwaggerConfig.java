@@ -28,7 +28,7 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfo(
                 "Vehicle API",
-                "This API returns a list of Vehicles with information abbout them.",
+                "This API returns a list of Vehicles with information about them.",
                 "1.0",
                 "http://www.udacity.com/tos",
                 new Contact("Sameh Adel", "www.samehadel.com", "myeaddress@example.com"),
