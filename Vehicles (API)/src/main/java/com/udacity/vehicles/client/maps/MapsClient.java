@@ -20,8 +20,11 @@ public class MapsClient {
 
     private static final Logger log = LoggerFactory.getLogger(MapsClient.class);
 
-    private final WebClient client;
-    private final ModelMapper mapper;
+    @Autowired
+    private WebClient client;
+
+    @Autowired
+    private ModelMapper mapper;
 
     public MapsClient(WebClient maps, ModelMapper mapper, RestTemplateBuilder builder) {
         this.client = maps;

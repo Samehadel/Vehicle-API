@@ -35,6 +35,7 @@ public class PriceClient {
             //Call Pricing Microservice API
             Price price = restTemplate.getForObject("http://localhost:8082/prices/" + vehicleId, Price.class);
 
+
             return String.format("%s %s", price.getCurrency(), price.getPrice());
 
         } catch (Exception e) {
